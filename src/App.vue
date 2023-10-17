@@ -39,7 +39,7 @@ export default {
   }
 
   .red-100-text {
-    color: #EC1D24;
+    color: #EC1D24 !important;
   }
 
   .red-200-bg {

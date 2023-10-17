@@ -6,8 +6,10 @@
 
 <script lang="ts">
 export default {
-  name: 'Home',
-  props: ['getPathRoute'],
+  name: 'Page404',
+  props: {
+    pathRoute: Function,
+  },
   mounted() {
     this.$emit('getPathRoute');
   },

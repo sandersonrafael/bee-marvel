@@ -20,7 +20,9 @@ export default {
     Logo,
     Breadcrumb,
   },
-  props: ['getPathRoute'],
+  props: {
+    pathRoute: Function,
+  },
   mounted() {
     this.$emit('getPathRoute');
   },
