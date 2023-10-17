@@ -4,13 +4,10 @@
 
     <main>
       <div class="row mb-3">
-        <EventCard :event-date="'24/10/2016'" :event-img="imagemTemporaria" event-name="SPIDER MAN BLA BLA LBA LA LASJDLJSABSD" :event-url="'/ok/okok'" class="col p-3 container" />
-        <EventCard :event-date="'24/10/2016'" :event-img="imagemTemporaria" event-name="SPIDER MAN BLA BLA LBA LA LASJDLJSABSD" :event-url="'/ok/okok'" class="col p-3 container" />
-      </div>
-
-      <div class="row">
-        <EventCard :event-date="'24/10/2016'" :event-img="imagemTemporaria" event-name="SPIDER MAN BLA BLA LBA LA LASJDLJSABSD" :event-url="'/ok/okok'" class="col p-3 container" />
-        <EventCard :event-date="'24/10/2016'" :event-img="imagemTemporaria" event-name="SPIDER MAN BLA BLA LBA LA LASJDLJSABSD" :event-url="'/ok/okok'" class="col p-3 container" />
+        <EventCard :event-date="'24/10/2016'" :event-img="imagemTemporaria" event-name="SPIDER MAN BLA BLA LBA LA LASJDLJSABSD" :event-url="'/ok/okok'" class="col-12 col-md-6 col-lg-4 col-xl-6 p-3 pb-4 container" />
+        <EventCard :event-date="'24/10/2016'" :event-img="imagemTemporaria" event-name="SPIDER MAN BLA BLA LBA LA LASJDLJSABSD" :event-url="'/ok/okok'" class="col-12 col-md-6 col-lg-4 col-xl-6 p-3 pb-4 container" />
+        <EventCard :event-date="'24/10/2016'" :event-img="imagemTemporaria" event-name="SPIDER MAN BLA BLA LBA LA LASJDLJSABSD" :event-url="'/ok/okok'" class="col-12 col-md-6 col-lg-4 col-xl-6 p-3 pb-4 container" />
+        <EventCard :event-date="'24/10/2016'" :event-img="imagemTemporaria" event-name="SPIDER MAN BLA BLA LBA LA LASJDLJSABSD" :event-url="'/ok/okok'" class="col-12 col-md-6 col-lg-4 col-xl-6 p-3 pb-4 container" />
       </div>
 
     </main>

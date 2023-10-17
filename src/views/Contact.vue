@@ -1,15 +1,15 @@
 <template>
   <div class="container">
     <Breadcrumb :breadcrumb="['Contact']" />
-    <form class="text-dark">
+    <form class="text-dark" @submit="formSubmit">
       <div class="col-lg-6 pb-3">
-        <label for="form-name" class="form-label">Name</label>
+        <label for="form-name" class="form-label fw-semibold">Name</label>
         <input
           type="text"
           name="name"
           id="form-name"
           class="form-control"
-          placeholder="Your full name"
+          placeholder="Ex.: Your full name"
           required
           v-model="name"
           @input="validateName"
@@ -24,7 +24,7 @@
           name="email"
           id="form-email"
           class="form-control"
-          placeholder="myemail@email.com"
+          placeholder="Ex.: myemail@email.com"
           required
           v-model="email"
           @input="validateEmail"
@@ -39,7 +39,7 @@
           name="phone"
           id="form-phone"
           class="form-control"
-          placeholder="(99) 9 9999-9999"
+          placeholder="Ex.: (99) 9 9999-9999"
           required
           v-model="phone"
           @input="validatePhone"
@@ -53,7 +53,7 @@
           name="message"
           id="form-message"
           rows="5"
-          placeholder="Contact message for Marvel"
+          placeholder="Ex.: Contact message for Marvel"
           class="form-control"
           style="resize: none;"
           required
@@ -63,16 +63,28 @@
         <span class="text-danger" ref="textMessage"></span>
       </div>
 
-      <button ref="submitButton" type="submit" class="w-lg-100 fs-5 btn btn-secondary px-4 py-2 disabled">
+      <button
+        ref="submitButton"
+        type="submit"
+        class="w-lg-100 fs-5 btn btn-secondary px-4 py-2 disabled"
+        data-bs-toggle="modal"
+        data-bs-target="#formModal"
+      >
         Send
       </button>
     </form>
+
+    <div class="vh-100 position-relative">
+      <Modal />
+    </div>
+
   </div>
 </template>
 
 <script lang="ts">
 import Breadcrumb from '../components/Breadcrumb.vue';
 import validateFields from '../utils/validateFields';
+import Modal from '../components/Modal.vue';
 
 export default {
   name: 'Contact',
@@ -86,6 +98,7 @@ export default {
   },
   components: {
     Breadcrumb,
+    Modal,
   },
   props: {
     pathRoute: Function,
@@ -94,6 +107,7 @@ export default {
     this.$emit('getPathRoute');
   },
   methods: {
+    formSubmit(e: Event) { e.preventDefault(); },
     allowSubmit() {
       const button = this.$refs.submitButton as HTMLButtonElement;
 

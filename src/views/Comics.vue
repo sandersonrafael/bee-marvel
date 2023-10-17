@@ -4,20 +4,18 @@
 
     <main>
       <div class="row">
-        <ComicCard :comic-pages="100" :comic-img="imagemTemporaria" comic-name="SPIDER MAN BLA BLA LBA LA LASJDLJSABSD" :comic-url="'/ok/okok'" class="col-2 p-3" />
-        <ComicCard :comic-pages="100" :comic-img="imagemTemporaria" comic-name="SPIDER MANAS DA D " :comic-url="'/ok/okok'" class="col-2 p-3" />
-        <ComicCard :comic-pages="100" :comic-img="imagemTemporaria" comic-name="SPIDER MAN" :comic-url="'/ok/okok'" class="col-2 p-3" />
-        <ComicCard :comic-pages="100" :comic-img="imagemTemporaria" comic-name="SPIDER MAN" :comic-url="'/ok/okok'" class="col-2 p-3" />
-        <ComicCard :comic-pages="100" :comic-img="imagemTemporaria" comic-name="SPIDER MAN" :comic-url="'/ok/okok'" class="col-2 p-3" />
-        <ComicCard :comic-pages="100" :comic-img="imagemTemporaria" comic-name="SPIDER MANA SDSAD" :comic-url="'/ok/okok'" class="col-2 p-3" />
-      </div>
-      <div class="row">
-        <ComicCard :comic-pages="100" :comic-img="imagemTemporaria" comic-name="SPIDER MAN BLA BLA LBA LA LASJDLJSABSD" :comic-url="'/ok/okok'" class="col-2 p-3" />
-        <ComicCard :comic-pages="100" :comic-img="imagemTemporaria" comic-name="SPIDER MANAS DA D " :comic-url="'/ok/okok'" class="col-2 p-3" />
-        <ComicCard :comic-pages="100" :comic-img="imagemTemporaria" comic-name="SPIDER MAN" :comic-url="'/ok/okok'" class="col-2 p-3" />
-        <ComicCard :comic-pages="100" :comic-img="imagemTemporaria" comic-name="SPIDER MAN" :comic-url="'/ok/okok'" class="col-2 p-3" />
-        <ComicCard :comic-pages="100" :comic-img="imagemTemporaria" comic-name="SPIDER MAN" :comic-url="'/ok/okok'" class="col-2 p-3" />
-        <ComicCard :comic-pages="100" :comic-img="imagemTemporaria" comic-name="SPIDER MANA SDSAD" :comic-url="'/ok/okok'" class="col-2 p-3" />
+        <ComicCard :comic-pages="100" :comic-img="imagemTemporaria" comic-name="SPIDER MAN BLA BLA LBA LA LASJDLJSABSD" :comic-url="'/ok/okok'" class="col-6 col-md-4 col-lg-3 col-xl-2 p-3" />
+        <ComicCard :comic-pages="100" :comic-img="imagemTemporaria" comic-name="SPIDER MANAS DA D " :comic-url="'/ok/okok'" class="col-6 col-md-4 col-lg-3 col-xl-2 p-3" />
+        <ComicCard :comic-pages="100" :comic-img="imagemTemporaria" comic-name="SPIDER MAN" :comic-url="'/ok/okok'" class="col-6 col-md-4 col-lg-3 col-xl-2 p-3" />
+        <ComicCard :comic-pages="100" :comic-img="imagemTemporaria" comic-name="SPIDER MAN" :comic-url="'/ok/okok'" class="col-6 col-md-4 col-lg-3 col-xl-2 p-3" />
+        <ComicCard :comic-pages="100" :comic-img="imagemTemporaria" comic-name="SPIDER MAN" :comic-url="'/ok/okok'" class="col-6 col-md-4 col-lg-3 col-xl-2 p-3" />
+        <ComicCard :comic-pages="100" :comic-img="imagemTemporaria" comic-name="SPIDER MANA SDSAD" :comic-url="'/ok/okok'" class="col-6 col-md-4 col-lg-3 col-xl-2 p-3" />
+        <ComicCard :comic-pages="100" :comic-img="imagemTemporaria" comic-name="SPIDER MAN BLA BLA LBA LA LASJDLJSABSD" :comic-url="'/ok/okok'" class="col-6 col-md-4 col-lg-3 col-xl-2 p-3" />
+        <ComicCard :comic-pages="100" :comic-img="imagemTemporaria" comic-name="SPIDER MANAS DA D " :comic-url="'/ok/okok'" class="col-6 col-md-4 col-lg-3 col-xl-2 p-3" />
+        <ComicCard :comic-pages="100" :comic-img="imagemTemporaria" comic-name="SPIDER MAN" :comic-url="'/ok/okok'" class="col-6 col-md-4 col-lg-3 col-xl-2 p-3" />
+        <ComicCard :comic-pages="100" :comic-img="imagemTemporaria" comic-name="SPIDER MAN" :comic-url="'/ok/okok'" class="col-6 col-md-4 col-lg-3 col-xl-2 p-3" />
+        <ComicCard :comic-pages="100" :comic-img="imagemTemporaria" comic-name="SPIDER MAN" :comic-url="'/ok/okok'" class="col-6 col-md-4 col-lg-3 col-xl-2 p-3" />
+        <ComicCard :comic-pages="100" :comic-img="imagemTemporaria" comic-name="SPIDER MANA SDSAD" :comic-url="'/ok/okok'" class="col-6 col-md-4 col-lg-3 col-xl-2 p-3" />
       </div>
 
     </main>

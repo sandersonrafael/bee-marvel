@@ -3,7 +3,7 @@
     <RouterLink :to="(charUrl as string)">
       <img :src="charImg" :alt="charName" class="img-fluid rounded-1">
     </RouterLink>
-    <RouterLink class="text-dark fw-bold fs-5 pt-2" :to="(charUrl as string)">{{ charName }}</RouterLink>
+    <RouterLink class="text-dark fw-bold fs-5 pt-3" :to="(charUrl as string)">{{ charName }}</RouterLink>
   </div>
 </template>
 

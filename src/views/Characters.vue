@@ -4,20 +4,19 @@
 
     <main>
       <div class="row">
-        <CharacterCard :char-img="imagemTemporaria" char-name="SPIDER MAN" :char-url="'/ok/okok'" class="col-2 p-3" />
-        <CharacterCard :char-img="imagemTemporaria" char-name="SPIDER MAN" :char-url="'/ok/okok'" class="col-2 p-3" />
-        <CharacterCard :char-img="imagemTemporaria" char-name="SPIDER MAN" :char-url="'/ok/okok'" class="col-2 p-3" />
-        <CharacterCard :char-img="imagemTemporaria" char-name="SPIDER MAN" :char-url="'/ok/okok'" class="col-2 p-3" />
-        <CharacterCard :char-img="imagemTemporaria" char-name="SPIDER MAN" :char-url="'/ok/okok'" class="col-2 p-3" />
-        <CharacterCard :char-img="imagemTemporaria" char-name="SPIDER MAN" :char-url="'/ok/okok'" class="col-2 p-3" />
-      </div>
-      <div class="row">
-        <CharacterCard :char-img="imagemTemporaria" char-name="SPIDER MAN" :char-url="'/ok/okok'" class="col-2 p-3" />
-        <CharacterCard :char-img="imagemTemporaria" char-name="SPIDER MAN" :char-url="'/ok/okok'" class="col-2 p-3" />
-        <CharacterCard :char-img="imagemTemporaria" char-name="SPIDER MAN" :char-url="'/ok/okok'" class="col-2 p-3" />
-        <CharacterCard :char-img="imagemTemporaria" char-name="SPIDER MAN" :char-url="'/ok/okok'" class="col-2 p-3" />
-        <CharacterCard :char-img="imagemTemporaria" char-name="SPIDER MAN" :char-url="'/ok/okok'" class="col-2 p-3" />
-        <CharacterCard :char-img="imagemTemporaria" char-name="SPIDER MAN" :char-url="'/ok/okok'" class="col-2 p-3" />
+        <CharacterCard :char-img="imagemTemporaria" char-name="SPIDER MAN" :char-url="'/ok/okok'" class="col-6 col-md-4 col-lg-3 col-xl-2 p-3" />
+        <CharacterCard :char-img="imagemTemporaria" char-name="SPIDER MAN" :char-url="'/ok/okok'" class="col-6 col-md-4 col-lg-3 col-xl-2 p-3" />
+        <CharacterCard :char-img="imagemTemporaria" char-name="SPIDER MAN" :char-url="'/ok/okok'" class="col-6 col-md-4 col-lg-3 col-xl-2 p-3" />
+        <CharacterCard :char-img="imagemTemporaria" char-name="SPIDER MAN" :char-url="'/ok/okok'" class="col-6 col-md-4 col-lg-3 col-xl-2 p-3" />
+        <CharacterCard :char-img="imagemTemporaria" char-name="SPIDER MAN" :char-url="'/ok/okok'" class="col-6 col-md-4 col-lg-3 col-xl-2 p-3" />
+        <CharacterCard :char-img="imagemTemporaria" char-name="SPIDER MAN" :char-url="'/ok/okok'" class="col-6 col-md-4 col-lg-3 col-xl-2 p-3" />
+        <CharacterCard :char-img="imagemTemporaria" char-name="SPIDER MAN" :char-url="'/ok/okok'" class="col-6 col-md-4 col-lg-3 col-xl-2 p-3" />
+        <CharacterCard :char-img="imagemTemporaria" char-name="SPIDER MAN" :char-url="'/ok/okok'" class="col-6 col-md-4 col-lg-3 col-xl-2 p-3" />
+        <CharacterCard :char-img="imagemTemporaria" char-name="SPIDER MAN" :char-url="'/ok/okok'" class="col-6 col-md-4 col-lg-3 col-xl-2 p-3" />
+        <CharacterCard :char-img="imagemTemporaria" char-name="SPIDER MAN" :char-url="'/ok/okok'" class="col-6 col-md-4 col-lg-3 col-xl-2 p-3" />
+        <CharacterCard :char-img="imagemTemporaria" char-name="SPIDER MAN" :char-url="'/ok/okok'" class="col-6 col-md-4 col-lg-3 col-xl-2 p-3" />
+        <CharacterCard :char-img="imagemTemporaria" char-name="SPIDER MAN" :char-url="'/ok/okok'" class="col-6 col-md-4 col-lg-3 col-xl-2 p-3" />
+        <CharacterCard :char-img="imagemTemporaria" char-name="SPIDER MAN" :char-url="'/ok/okok'" class="col-6 col-md-4 col-lg-3 col-xl-2 p-3" />
       </div>
 
     </main>
