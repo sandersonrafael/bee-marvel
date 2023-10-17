@@ -35,7 +35,7 @@ export default {
   }
 
   .red-100-bg {
-    background-color: #EC1D24;
+    background-color: #EC1D24 !important;
   }
 
   .red-100-text {
