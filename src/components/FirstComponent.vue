@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <ul>
+  <div class="container">
+    <ul class="bg-dark">
       <li>
         <RouterLink to="/">Ir para a Home</RouterLink>
       </li>
