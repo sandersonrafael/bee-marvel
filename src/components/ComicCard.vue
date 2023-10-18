@@ -1,7 +1,7 @@
 <template>
   <div class="card border-0">
     <img :src="comicImg" :alt="comicName" class="img-fluid rounded-1">
-    <span class="fw-bold fs-5 pt-2" :to="(comicUrl as string)">{{ comicName }}</span>
+    <span class="fw-bold fs-6 pt-2" :to="(comicUrl as string)">{{ comicName }}</span>
     <span class="fs-6" :to="(comicUrl as string)">PAGES: {{ comicPages }}</span>
   </div>
 </template>

@@ -1,9 +1,9 @@
 <template>
   <div class="card border-0">
-    <RouterLink :to="(charUrl as string)">
+    <RouterLink :to="`/characters/${urlParam}`">
       <img :src="charImg" :alt="charName" class="img-fluid rounded-1">
     </RouterLink>
-    <RouterLink class="text-dark fw-bold fs-5 pt-3" :to="(charUrl as string)">{{ charName }}</RouterLink>
+    <RouterLink class="text-dark fw-bold fs-5 pt-3" :to="`/characters/${urlParam}`">{{ charName }}</RouterLink>
   </div>
 </template>
 
@@ -13,7 +13,7 @@ export default {
   props: {
     charImg: String,
     charName: String,
-    charUrl: String,
+    urlParam: Number,
   },
 };
 </script>
