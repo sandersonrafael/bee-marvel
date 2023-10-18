@@ -29,7 +29,6 @@ export default {
   name: 'Characters',
   data() {
     return {
-      imagemTemporaria: 'https://img.freepik.com/vetores-premium/moldura-quadrada-de-luz-rosa-quadrado-de-luz-rosa-banner-quadrado-luz-rosa_1189-2997.jpg?w=740',
       characterList: ([] as Character[]),
     };
   },
@@ -43,14 +42,15 @@ export default {
   mounted() {
     this.$emit('getPathRoute');
 
-    (async () => {
+    const loadApiData = async () => {
       const getCharacters = await fetchData('characters') as FetchResponse;
-      const getList: Character[] = getCharacters?.data?.results || [];
+      const getList: Character[] = (getCharacters?.data?.results as Character[]) || [];
 
       this.characterList = getList.filter((char) => {
         return char.thumbnail.path.indexOf('image_not_available') === -1;
       });
-    })();
+    };
+    loadApiData();
   },
 };
 </script>

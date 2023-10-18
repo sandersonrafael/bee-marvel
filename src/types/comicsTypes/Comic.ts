@@ -1,0 +1,44 @@
+import TextObject from './TextObject';
+import Url from './Url';
+import Series from './Series';
+import ComicDate from './ComicDate';
+import Price from './Price';
+import Image from './Image';
+import Creators from './Creators';
+import ComicCharacters from './ComicCharacters';
+import Stories from './Stories';
+import Events from './Events';
+
+type Comic = {
+  id: number;
+  digitalId: number;
+  title: string;
+  issueNumber: number;
+  variantDescription: string;
+  description: string;
+  modified: string;
+  isbn: string;
+  upc: string;
+  diamondCode: string;
+  ean: string;
+  issn: string;
+  format: string;
+  pageCount: number;
+  textObjects: TextObject[];
+  resourceURI: string;
+  urls: Url[];
+  series: Series;
+  variants: [];
+  collections: [];
+  collectedIssues: [];
+  dates: ComicDate[];
+  prices: Price[];
+  thumbnail: Image;
+  images: Image[];
+  creators: Creators;
+  characters: ComicCharacters;
+  stories: Stories;
+  events: Events;
+};
+
+export default Comic;

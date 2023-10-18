@@ -4,20 +4,15 @@
 
     <main>
       <div class="row">
-        <ComicCard :comic-pages="100" :comic-img="imagemTemporaria" comic-name="SPIDER MAN BLA BLA LBA LA LASJDLJSABSD" :comic-url="'/ok/okok'" class="col-6 col-md-4 col-lg-3 col-xl-2 p-3" />
-        <ComicCard :comic-pages="100" :comic-img="imagemTemporaria" comic-name="SPIDER MANAS DA D " :comic-url="'/ok/okok'" class="col-6 col-md-4 col-lg-3 col-xl-2 p-3" />
-        <ComicCard :comic-pages="100" :comic-img="imagemTemporaria" comic-name="SPIDER MAN" :comic-url="'/ok/okok'" class="col-6 col-md-4 col-lg-3 col-xl-2 p-3" />
-        <ComicCard :comic-pages="100" :comic-img="imagemTemporaria" comic-name="SPIDER MAN" :comic-url="'/ok/okok'" class="col-6 col-md-4 col-lg-3 col-xl-2 p-3" />
-        <ComicCard :comic-pages="100" :comic-img="imagemTemporaria" comic-name="SPIDER MAN" :comic-url="'/ok/okok'" class="col-6 col-md-4 col-lg-3 col-xl-2 p-3" />
-        <ComicCard :comic-pages="100" :comic-img="imagemTemporaria" comic-name="SPIDER MANA SDSAD" :comic-url="'/ok/okok'" class="col-6 col-md-4 col-lg-3 col-xl-2 p-3" />
-        <ComicCard :comic-pages="100" :comic-img="imagemTemporaria" comic-name="SPIDER MAN BLA BLA LBA LA LASJDLJSABSD" :comic-url="'/ok/okok'" class="col-6 col-md-4 col-lg-3 col-xl-2 p-3" />
-        <ComicCard :comic-pages="100" :comic-img="imagemTemporaria" comic-name="SPIDER MANAS DA D " :comic-url="'/ok/okok'" class="col-6 col-md-4 col-lg-3 col-xl-2 p-3" />
-        <ComicCard :comic-pages="100" :comic-img="imagemTemporaria" comic-name="SPIDER MAN" :comic-url="'/ok/okok'" class="col-6 col-md-4 col-lg-3 col-xl-2 p-3" />
-        <ComicCard :comic-pages="100" :comic-img="imagemTemporaria" comic-name="SPIDER MAN" :comic-url="'/ok/okok'" class="col-6 col-md-4 col-lg-3 col-xl-2 p-3" />
-        <ComicCard :comic-pages="100" :comic-img="imagemTemporaria" comic-name="SPIDER MAN" :comic-url="'/ok/okok'" class="col-6 col-md-4 col-lg-3 col-xl-2 p-3" />
-        <ComicCard :comic-pages="100" :comic-img="imagemTemporaria" comic-name="SPIDER MANA SDSAD" :comic-url="'/ok/okok'" class="col-6 col-md-4 col-lg-3 col-xl-2 p-3" />
+        <ComicCard
+          v-for="comic in comicList"
+          :key="comic.id"
+          :comic-pages="comic.pageCount"
+          :comic-img="`${comic.thumbnail.path}.${comic.thumbnail.extension}`"
+          :comic-name="'SPIDER'"
+          class="col-6 col-md-4 col-lg-3 col-xl-2 p-3"
+        />
       </div>
-
     </main>
   </div>
 </template>
@@ -25,12 +20,15 @@
 <script lang="ts">
 import Breadcrumb from '../components/Breadcrumb.vue';
 import ComicCard from '../components/ComicCard.vue';
+import FetchResponse from '../types/FetchResponse';
+import Comic from '../types/comicsTypes/Comic';
+import fetchData from '../utils/fetchData';
 
 export default {
   name: 'Comics',
   data() {
     return {
-      imagemTemporaria: 'https://upload.wikimedia.org/wikipedia/commons/7/74/Namtheun_2021-10-16_0225Z.jpg',
+      comicList: ([] as Comic[]),
     };
   },
   components: {
@@ -42,6 +40,16 @@ export default {
   },
   mounted() {
     this.$emit('getPathRoute');
+
+    const loadApiData = async () => {
+      const getComics = await fetchData('comics') as FetchResponse;
+      const getList: Comic[] = (getComics?.data?.results as Comic[]) || [];
+
+      this.comicList = getList.filter((char) => {
+        return char.thumbnail.path.indexOf('image_not_available') === -1;
+      });
+    };
+    loadApiData();
   },
 };
 </script>
