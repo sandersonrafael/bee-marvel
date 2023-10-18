@@ -1,24 +1,31 @@
 <template>
   <div class="container pb-5">
-    <Breadcrumb :breadcrumb="['Chacacters', 'Spider man']" />
+    <Breadcrumb :breadcrumb="['Chacacters', charName]" />
 
     <main>
       <div class="row py-3">
         <div class="col-12 col-md-6 col-lg-3 pb-4">
-          <img :src="imagemTemporaria" :alt="''" class="img-fluid rounded-1">
+          <img
+            :src="imageSrc"
+            :alt="charName"
+            class="img-fluid rounded-1"
+          >
         </div>
 
         <div class="col-122 col-md-6 col-lg-9 px-lg-5">
-          <h1 class="fs-2 fw-bold pb-4">SPIDER MAN</h1>
-          <p class="lh-base pb-4">
-            LOREM IPSUM DOLOR SIT AMET CONSECTETUR. RISUS PULVINAR IPSUM LAOREET VENENATIS. AUGUE LOREM SED MALESUADA DUIS ERAT. MASSA FELIS SEMPER GRAVIDA INTEGER TINCIDUNT MORBI EU ADIPISCING. FUSCE TORTOR ODIO NASCETUR TINCIDUNT SED ERAT. MASSA FELIS SEMPER GRAVIDA INTEGER TINCIDUNT MORBI EU ADIPISCING. FUSCE ERAT. MASSA FELIS SEMPER GRAVIDA INTEGER TINCIDUNT MORBI EU ADIPISCING. FUSCEERAT. MASSA FELIS SEMPER GRAVIDA INTEGER TINCIDUNT MORBI EU ADIPISCING. FUSCE.          </p>
+          <h1 class="fs-2 fw-bold pb-4">{{ charName.toUpperCase() }}</h1>
+          <p class="lh-base pb-4">{{ charDescription.toUpperCase() }}</p>
 
-            <div class="row pb-5">
+            <div class="row">
               <h2 class="fs-2 fw-bold pb-3">COMICS</h2>
-              <ComicCard :comic-pages="100" :comic-img="imagemTemporaria2" comic-name="SPIDER MAN BLA BLA LBA LA LASJDLJSABSD" :comic-url="'/ok/okok'" class="col-6 col-md-6 col-lg-3 pb-4" />
-              <ComicCard :comic-pages="100" :comic-img="imagemTemporaria2" comic-name="SPIDER MAN BLA BLA LBA LA LASJDLJSABSD" :comic-url="'/ok/okok'" class="col-6 col-md-6 col-lg-3 pb-4" />
-              <ComicCard :comic-pages="100" :comic-img="imagemTemporaria2" comic-name="SPIDER MAN BLA BLA LBA LA LASJDLJSABSD" :comic-url="'/ok/okok'" class="col-6 col-md-6 col-lg-3 pb-4" />
-              <ComicCard :comic-pages="100" :comic-img="imagemTemporaria2" comic-name="SPIDER MAN BLA BLA LBA LA LASJDLJSABSD" :comic-url="'/ok/okok'" class="col-6 col-md-6 col-lg-3 pb-4" />
+              <ComicCard
+                v-for="(comic, index) in charComics"
+                :key="index"
+                :comic-img="`${comic.thumbnail.path}.${comic.thumbnail.extension}`"
+                :comic-name="comic.title"
+                :comic-pages="comic.pageCount"
+                class="col-6 col-md-6 col-lg-3 pb-4"
+              />
             </div>
         </div>
       </div>
@@ -29,13 +36,20 @@
 <script lang="ts">
 import Breadcrumb from '../components/Breadcrumb.vue';
 import ComicCard from '../components/ComicCard.vue';
+import FetchResponse from '../types/FetchResponse';
+import Character from '../types/charactersTypes/Character';
+import Comic from '../types/comicsTypes/Comic';
+import fetchData from '../utils/fetchData';
 
 export default {
   name: 'Character',
   data() {
     return {
-      imagemTemporaria: 'https://img.freepik.com/vetores-premium/moldura-quadrada-de-luz-rosa-quadrado-de-luz-rosa-banner-quadrado-luz-rosa_1189-2997.jpg?w=740',
-      imagemTemporaria2: 'https://upload.wikimedia.org/wikipedia/commons/7/74/Namtheun_2021-10-16_0225Z.jpg',
+      character: ({} as Character),
+      imageSrc: '',
+      charName: '',
+      charDescription: '',
+      charComics: ([] as Comic[]),
     };
   },
   components: {
@@ -44,6 +58,23 @@ export default {
   },
   mounted() {
     this.$emit('getPathRoute');
+
+    const loadApiData = async () => {
+      const getCharacter = await fetchData(`characters/${this.$route.params.id}`) as FetchResponse;
+      this.character = (getCharacter?.data?.results[0] as Character) || {};
+
+      this.imageSrc = `${this.character.thumbnail.path}.${this.character.thumbnail.extension}`;
+      this.charName = this.character.name;
+      this.charDescription = this.character.description || 'NO DESCRIPTION AVAILABLE';
+
+      const getCharacterComics = await fetchData(`characters/${this.$route.params.id}/comics`) as FetchResponse;
+      const comicList: Comic[] = (getCharacterComics?.data?.results as Comic[]) || [];
+
+      this.charComics = comicList
+        .filter((comic) => comic.thumbnail.path.indexOf('image_not_available') === -1)
+        .filter((_comic, index) => index < 4);
+    };
+    loadApiData();
   },
 };
 </script>

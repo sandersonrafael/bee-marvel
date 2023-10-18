@@ -9,7 +9,7 @@
           :key="comic.id"
           :comic-pages="comic.pageCount"
           :comic-img="`${comic.thumbnail.path}.${comic.thumbnail.extension}`"
-          :comic-name="'SPIDER'"
+          :comic-name="comic.title"
           class="col-6 col-md-4 col-lg-3 col-xl-2 p-3"
         />
       </div>
