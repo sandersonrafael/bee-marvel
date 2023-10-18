@@ -1,6 +1,9 @@
 <template>
-  <div class="container">
-    <Breadcrumb :breadcrumb="['Contact']" />
+  <div class="container pb-5">
+    <Breadcrumb :breadcrumb="[{name: 'Contact', urlPath: ''}]" />
+
+    <Modal class="pt-5" />
+
     <form class="text-dark" @submit="formSubmit">
       <div class="col-lg-6 pb-3">
         <label for="form-name" class="form-label fw-semibold">Name</label>
@@ -18,7 +21,7 @@
       </div>
 
       <div class="col-lg-6 pb-3">
-        <label for="form-email" class="form-label">Email</label>
+        <label for="form-email" class="form-label fw-semibold">Email</label>
         <input
           type="email"
           name="email"
@@ -33,7 +36,7 @@
       </div>
 
       <div class="col-lg-6 pb-3">
-        <label for="form-phone" class="form-label">Phone</label>
+        <label for="form-phone" class="form-label fw-semibold">Phone</label>
         <input
           type="text"
           name="phone"
@@ -48,7 +51,7 @@
       </div>
 
       <div class="col-lg-6 pb-3">
-        <label for="form-message" class="form-label">Message</label>
+        <label for="form-message" class="form-label fw-semibold">Message</label>
         <textarea
           name="message"
           id="form-message"
@@ -73,10 +76,6 @@
         Send
       </button>
     </form>
-
-    <div class="vh-100 position-relative">
-      <Modal />
-    </div>
 
   </div>
 </template>
@@ -107,8 +106,15 @@ export default {
     this.$emit('getPathRoute');
   },
   methods: {
-    formSubmit(e: Event) { e.preventDefault(); },
-    allowSubmit() {
+    formSubmit(e: Event) {
+      e.preventDefault();
+      this.name = '';
+      this.email = '';
+      this.phone = '';
+      this.message = '';
+      this.checkIfAllowsSubmit();
+    },
+    checkIfAllowsSubmit() {
       const button = this.$refs.submitButton as HTMLButtonElement;
 
       if (
@@ -140,7 +146,7 @@ export default {
         input.classList.add('border-danger');
         error.innerText = 'Invalid name';
       }
-      this.allowSubmit();
+      this.checkIfAllowsSubmit();
     },
     validateEmail(e: Event) {
       const input = (e.target as HTMLInputElement);
@@ -154,7 +160,7 @@ export default {
         error.innerText = 'Invalid email';
       }
 
-      this.allowSubmit();
+      this.checkIfAllowsSubmit();
     },
     validatePhone(e: Event) {
       const input = (e.target as HTMLInputElement);
@@ -171,7 +177,7 @@ export default {
         error.innerText = 'Invalid phone';
       }
 
-      this.allowSubmit();
+      this.checkIfAllowsSubmit();
     },
     validateMessage(e: Event) {
       const textArea = (e.target as HTMLTextAreaElement);
@@ -185,7 +191,7 @@ export default {
         error.innerText = 'Message field must be at least 20 characters';
       }
 
-      this.allowSubmit();
+      this.checkIfAllowsSubmit();
     },
   },
 };

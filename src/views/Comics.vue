@@ -1,6 +1,8 @@
 <template>
   <div class="container">
-    <Breadcrumb :breadcrumb="['Comics']" />
+    <Breadcrumb :breadcrumb="[{name: 'Comics', urlPath: ''}]" />
+
+    <Loading v-if="loading" />
 
     <main>
       <div class="row">
@@ -23,17 +25,20 @@ import ComicCard from '../components/ComicCard.vue';
 import FetchResponse from '../types/FetchResponse';
 import Comic from '../types/comicsTypes/Comic';
 import fetchData from '../utils/fetchData';
+import Loading from '../components/Loading.vue';
 
 export default {
   name: 'Comics',
   data() {
     return {
       comicList: ([] as Comic[]),
+      loading: true,
     };
   },
   components: {
     Breadcrumb,
     ComicCard,
+    Loading,
   },
   props: {
     pathRoute: Function,
@@ -42,12 +47,16 @@ export default {
     this.$emit('getPathRoute');
 
     const loadApiData = async () => {
-      const getComics = await fetchData('comics') as FetchResponse;
-      const getList: Comic[] = (getComics?.data?.results as Comic[]) || [];
+      try {
+        const getComics = await fetchData('comics') as FetchResponse;
+        const getList: Comic[] = (getComics?.data?.results as Comic[]) || [];
 
-      this.comicList = getList.filter((char) => {
-        return char.thumbnail.path.indexOf('image_not_available') === -1;
-      });
+        this.comicList = getList.filter((char) => {
+          return char.thumbnail.path.indexOf('image_not_available') === -1;
+        });
+      } finally {
+        this.loading = false;
+      }
     };
     loadApiData();
   },

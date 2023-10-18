@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Breadcrumb :breadcrumb="['Home']" />
+    <Breadcrumb :breadcrumb="[{name: 'Home', urlPath: ''}]" />
     <main class="position-absolute top-50 start-50 translate-middle">
       <div class="d-flex justify-content-center">
         <Logo class="mv-gray align-self-center text"  />

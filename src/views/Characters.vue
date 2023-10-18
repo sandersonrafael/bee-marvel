@@ -1,6 +1,8 @@
 <template>
   <div class="container">
-    <Breadcrumb :breadcrumb="['Characters']" />
+    <Breadcrumb :breadcrumb="[{name: 'Characters', urlPath: ''}]" />
+
+    <Loading v-if="loading" />
 
     <main>
       <div class="row">
@@ -24,17 +26,20 @@ import CharacterCard from '../components/CharacterCard.vue';
 import fetchData from '../utils/fetchData';
 import FetchResponse from '../types/FetchResponse';
 import Character from '../types/charactersTypes/Character';
+import Loading from '../components/Loading.vue';
 
 export default {
   name: 'Characters',
   data() {
     return {
       characterList: ([] as Character[]),
+      loading: true,
     };
   },
   components: {
     Breadcrumb,
     CharacterCard,
+    Loading,
   },
   props: {
     pathRoute: Function,
@@ -43,12 +48,17 @@ export default {
     this.$emit('getPathRoute');
 
     const loadApiData = async () => {
-      const getCharacters = await fetchData('characters') as FetchResponse;
-      const getList: Character[] = (getCharacters?.data?.results as Character[]) || [];
+      try {
+        const getCharacters = await fetchData('characters') as FetchResponse;
+        const getList: Character[] = (getCharacters?.data?.results as Character[]) || [];
 
-      this.characterList = getList.filter((char) => {
-        return char.thumbnail.path.indexOf('image_not_available') === -1;
-      });
+        this.characterList = getList.filter((char) => {
+          return char.thumbnail.path.indexOf('image_not_available') === -1;
+        });
+
+      } finally {
+        this.loading = false;
+      }
     };
     loadApiData();
   },

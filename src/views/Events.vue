@@ -1,7 +1,8 @@
 <template>
   <div class="container">
-    <Breadcrumb :breadcrumb="['Events']" />
+    <Breadcrumb :breadcrumb="[{ name: 'Events', urlPath: ''}]" />
 
+    <Loading v-if="loading" />
     <main>
       <div class="row mb-3">
         <EventCard
@@ -26,17 +27,20 @@ import EventCard from '../components/EventCard.vue';
 import FetchResponse from '../types/FetchResponse';
 import fetchData from '../utils/fetchData';
 import MarvelEvent from '../types/eventsTypes/Event';
+import Loading from '../components/Loading.vue';
 
 export default {
   name: 'Events',
   data() {
     return {
       eventList: ([] as MarvelEvent[]),
+      loading: true,
     };
   },
   components: {
     Breadcrumb,
     EventCard,
+    Loading,
   },
   props: {
     pathRoute: Function,
@@ -45,13 +49,14 @@ export default {
     this.$emit('getPathRoute');
 
     const loadApiData = async () => {
-      const getEvents = await fetchData('events') as FetchResponse;
-      const getList: MarvelEvent[] = (getEvents?.data?.results as MarvelEvent[]) || [];
+      try {
+        const getEvents = await fetchData('events') as FetchResponse;
+        const getList: MarvelEvent[] = (getEvents?.data?.results as MarvelEvent[]) || [];
 
-      this.eventList = [...getList];
-      // this.comicList = getList.filter((char) => {
-      //   return char.thumbnail.path.indexOf('image_not_available') === -1;
-      // });
+        this.eventList = [...getList];
+      } finally {
+        this.loading = false;
+      }
     };
     loadApiData();
   },
