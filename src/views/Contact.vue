@@ -194,6 +194,7 @@ export default {
       this.checkIfAllowsSubmit();
     },
   },
+  emits: ['getPathRoute'],
 };
 </script>
 <style scoped>

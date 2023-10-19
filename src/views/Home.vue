@@ -1,9 +1,10 @@
 <template>
   <div class="container">
     <Breadcrumb :breadcrumb="[{name: 'Home', urlPath: ''}]" />
-    <main class="position-absolute top-50 start-50 translate-middle">
+    <main class="position-absolute top-50 start-50 translate-middle w-100">
       <div class="d-flex justify-content-center">
-        <Logo class="mv-gray align-self-center text"  />
+        <Logo class="mv-gray d-sm-none" width="186" height="75" />
+        <Logo class="mv-gray d-none d-sm-block" />
       </div>
       <p class="pt-3 text-dark text-center fw-bold fs-2">WELCOME TO MARVEL'S DIRECTORY</p>
     </main>
@@ -26,5 +27,6 @@ export default {
   mounted() {
     this.$emit('getPathRoute');
   },
+  emits: ['getPathRoute'],
 };
 </script>

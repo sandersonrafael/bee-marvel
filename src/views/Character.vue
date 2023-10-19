@@ -1,6 +1,6 @@
 <template>
   <div class="container pb-5">
-    <Breadcrumb :breadcrumb="[{name: 'Chacacters', urlPath: '/characters'}, {name: charName, urlPath: ''}]" />
+    <Breadcrumb :breadcrumb="[{name: 'Characters', urlPath: '/characters'}, {name: charName, urlPath: ''}]" />
 
     <Loading v-if="loadingCharacter" />
 
@@ -92,5 +92,6 @@ export default {
     };
     loadApiData();
   },
+  emits: ['getPathRoute'],
 };
 </script>

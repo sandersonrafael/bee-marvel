@@ -60,5 +60,6 @@ export default {
     };
     loadApiData();
   },
+  emits: ['getPathRoute'],
 };
 </script>
