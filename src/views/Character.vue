@@ -42,7 +42,7 @@ import ComicCard from '../components/ComicCard.vue';
 import FetchResponse from '../types/FetchResponse';
 import Character from '../types/charactersTypes/Character';
 import Comic from '../types/comicsTypes/Comic';
-import fetchData from '../utils/fetchData';
+import fetchData from '../api/fetchData';
 import Loading from '../components/Loading.vue';
 
 export default {

@@ -82,7 +82,7 @@
 
 <script lang="ts">
 import Breadcrumb from '../components/Breadcrumb.vue';
-import validateFields from '../utils/validateFields';
+import validateFormFields from '../utils/validateFormFields';
 import Modal from '../components/Modal.vue';
 
 export default {
@@ -138,7 +138,7 @@ export default {
       const input = (e.target as HTMLInputElement);
       const error = this.$refs.nameMessage as HTMLSpanElement;
 
-      if (validateFields.name(this.name)) {
+      if (validateFormFields.name(this.name)) {
         input.classList.remove('border-danger');
         error.innerText = '';
       }
@@ -152,7 +152,7 @@ export default {
       const input = (e.target as HTMLInputElement);
       const error = this.$refs.emailMessage as HTMLSpanElement;
 
-      if (validateFields.email(this.email)) {
+      if (validateFormFields.email(this.email)) {
         input.classList.remove('border-danger');
         error.innerText = '';
       } else {
@@ -168,7 +168,7 @@ export default {
 
       this.phone = this.phone.replaceAll(/[^0-9]/g, '').slice(0, 11);
 
-      if (validateFields.phone(this.phone)) {
+      if (validateFormFields.phone(this.phone)) {
         this.phone = `(${this.phone.slice(0, 2)}) ${this.phone[2]} ${this.phone.slice(3, 7)}-${this.phone.slice(7, 11)}`;
         input.classList.remove('border-danger');
         error.innerText = '';
@@ -183,7 +183,7 @@ export default {
       const textArea = (e.target as HTMLTextAreaElement);
       const error = this.$refs.textMessage as HTMLSpanElement;
 
-      if (validateFields.message(this.message)) {
+      if (validateFormFields.message(this.message)) {
         textArea.classList.remove('border-danger');
         error.innerText = '';
       } else {

@@ -18,20 +18,20 @@
           class="col-6 col-md-4 col-lg-3 col-xl-2 p-3"
         />
       </div>
-
-      <PaginationButtons
-        @change-page="selectAnotherPage"
-        :number-of-pages="numberOfPages"
-        class="pb-5 pt-3 d-flex justify-content-center"
-      />
     </main>
+
+    <PaginationButtons
+      @change-page="selectAnotherPage"
+      :number-of-pages="numberOfPages"
+      class="pb-5 pt-3 d-flex justify-content-center"
+    />
   </div>
 </template>
 
 <script lang="ts">
 import Breadcrumb from '../components/Breadcrumb.vue';
 import CharacterCard from '../components/CharacterCard.vue';
-import fetchData from '../utils/fetchData';
+import fetchData from '../api/fetchData';
 import FetchResponse from '../types/FetchResponse';
 import Character from '../types/charactersTypes/Character';
 import Loading from '../components/Loading.vue';
@@ -73,7 +73,7 @@ export default {
           return char.thumbnail.path.indexOf('image_not_available') === -1;
         });
 
-        this.getNumberOfPages(this.characterList.length);
+        this.getNumberOfPages();
         this.getCharacterPageList();
         this.getCharacterShowableList();
 
@@ -93,23 +93,24 @@ export default {
         this.characterShowableList = [...this.characterPageList];
       }
     },
-    getNumberOfPages(numerOfCharacters: number) {
-      this.numberOfPages = Math.ceil(numerOfCharacters / this.charactersPerPage);
+    getNumberOfPages() {
+      const numberOfCharacters = this.characterList.length;
+      this.numberOfPages = Math.ceil(numberOfCharacters / this.charactersPerPage);
+    },
+    getCharacterPageList() {
+      this.characterPageList = this.characterList.filter((_char, index) => {
+        return index >= (this.actualPage - 1) * this.charactersPerPage
+        && index < this.actualPage * this.charactersPerPage;
+      });
+    },
+    getCharacterShowableList() {
+      this.characterShowableList = [...this.characterPageList];
     },
     selectAnotherPage(page: number) {
       this.actualPage = page;
       this.getCharacterPageList();
       this.getCharacterShowableList();
       window.scrollTo({ behavior: 'smooth', top: 0 });
-    },
-    getCharacterPageList() {
-      this.characterPageList = this.characterList.filter((_char, index) => {
-        return index >= (this.actualPage - 1) * this.charactersPerPage
-          && index < this.actualPage * this.charactersPerPage;
-      });
-    },
-    getCharacterShowableList() {
-      this.characterShowableList = [...this.characterPageList];
     },
   },
   emits: ['getPathRoute'],

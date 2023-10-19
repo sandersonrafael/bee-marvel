@@ -1,5 +1,5 @@
 <template>
-  <nav class="breadcrumb pt-3 pb-3 gray-200-text mb-0">
+  <nav class="breadcrumb pt-3 pb-3 ps-1 gray-200-text mb-0">
     <RouterLink to="/" class="d-flex align-items-center gray-200-text me-2">
       <HomeIcon width="16" height="16" />
     </RouterLink>

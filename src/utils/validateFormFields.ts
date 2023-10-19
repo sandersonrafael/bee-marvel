@@ -1,6 +1,6 @@
 import validator from 'validator';
 
-const validateFields = {
+const validateFormFields = {
   name(name: string): boolean {
     return name.length >= 3;
   },
@@ -15,4 +15,4 @@ const validateFields = {
   },
 };
 
-export default validateFields;
+export default validateFormFields;
