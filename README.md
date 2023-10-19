@@ -34,7 +34,7 @@ O projeto foi desenvolvido com as seguintes tecnologias:
 
 ## Principais Recursos
 
-- SAP
+- SPA
 - Responsividade
 - Carregamento dinâmico
 - Paginação
