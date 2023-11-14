@@ -15,7 +15,7 @@
 
           <hr>
 
-          <div class="pb-5 pb-md-0 text-white ms-auto">
+          <div class="pb-5 pb-md-0 ps-1 ps-md-0 text-white ms-auto">
             <ul class="navbar-nav fw-bold gap-2 fs-5 pb-5 pb-md-0">
                 <li class="position-relative">
                 <RouterLink @click="hideMenu" class="nav-link text-light" to="/">HOME</RouterLink>
